@@ -4,6 +4,7 @@ import cors from 'cors';
 import dotenv from 'dotenv';
 import authRoutes from './routes/auth.js';
 import predictionRoutes from './routes/predictions.js';
+import raceRoutes from './routes/races.js';
 import { requireAuth } from './middleware/requireAuth.js';
 
 dotenv.config();
@@ -17,6 +18,7 @@ app.use('/api/auth', authRoutes);
 
 app.use('/api/predictions', predictionRoutes);
 
+app.use('/api/races', raceRoutes);
 mongoose.connect(process.env.MONGO_URI)
   .then(() => console.log('MongoDB connected'))
   .catch((err) => console.error('MongoDB connection error:', err));
