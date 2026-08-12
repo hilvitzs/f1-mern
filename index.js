@@ -5,6 +5,7 @@ import dotenv from 'dotenv';
 import authRoutes from './routes/auth.js';
 import predictionRoutes from './routes/predictions.js';
 import raceRoutes from './routes/races.js';
+import leaderboardRoutes from './routes/leaderboard.js';
 import { requireAuth } from './middleware/requireAuth.js';
 
 dotenv.config();
@@ -17,6 +18,8 @@ app.use(express.json());
 app.use('/api/auth', authRoutes);
 
 app.use('/api/predictions', predictionRoutes);
+
+app.use('/api/leaderboard', leaderboardRoutes);
 
 app.use('/api/races', raceRoutes);
 mongoose.connect(process.env.MONGO_URI)
