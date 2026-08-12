@@ -1,20 +1,23 @@
 <script setup>
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
-import { useAuthStore } from '@/stores/auth'
+import { useAuthStore } from '@/stores/auth'; 
 
 const email = ref('')
 const password = ref('')
 const errorMessage = ref('')
+const successMessage = ref('')
 
 const authStore = useAuthStore()
 const router = useRouter()
 
 async function handleSubmit() {
   errorMessage.value = ''
+  successMessage.value = ''
   try {
-    await authStore.login(email.value, password.value)
-    router.push({ name: 'home' })
+    await authStore.signup(email.value, password.value)
+    successMessage.value = 'Account created - please log in.'
+    setTimeout(() => router.push({ name: 'login' }), 1500)
   } catch (err) {
     errorMessage.value = err.message
   }
@@ -22,7 +25,7 @@ async function handleSubmit() {
 </script>
 
 <template>
-  <h1>Login</h1>
+  <h1>Sign Up</h1>
 
   <form @submit.prevent="handleSubmit">
     <div>
@@ -33,8 +36,9 @@ async function handleSubmit() {
       <label for="password">Password</label>
       <input id="password" v-model="password" type="password" required />
     </div>
-    <button type="submit">Log in</button>
+    <button type="submit">Sign up</button>
   </form>
 
   <p v-if="errorMessage">{{ errorMessage }}</p>
+  <p v-if="successMessage">{{ successMessage }}</p>
 </template>
