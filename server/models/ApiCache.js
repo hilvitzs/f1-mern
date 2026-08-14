@@ -1,8 +1,8 @@
 import mongoose from 'mongoose';
 
-const raceCacheScehma = new mongoose.Schema({
-  season: {
-    type: Number,
+const apiCacheSchema = new mongoose.Schema({
+  key: {
+    type: String,
     required: true,
     unique: true,
   },
@@ -12,6 +12,6 @@ const raceCacheScehma = new mongoose.Schema({
   },
 }, { timestamps: true });
 
-const RaceCache = mongoose.model('RaceCache', raceCacheScehma);
+const ApiCache = mongoose.model('ApiCache', apiCacheSchema);
 
-export default RaceCache;
+export default ApiCache;

@@ -32,7 +32,7 @@ export const useAuthStore = defineStore('auth', () => {
 
     if (!response.ok) {
       const errorData = await response.json()
-      throw new Error(errorData.error || 'SIgnup failed')
+      throw new Error(errorData.error || 'Signup failed')
     }
   }
 

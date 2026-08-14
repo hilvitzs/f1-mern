@@ -6,6 +6,7 @@ import authRoutes from './routes/auth.js';
 import predictionRoutes from './routes/predictions.js';
 import raceRoutes from './routes/races.js';
 import leaderboardRoutes from './routes/leaderboard.js';
+import driverRoutes from './routes/drivers.js';
 import { requireAuth } from './middleware/requireAuth.js';
 
 dotenv.config();
@@ -22,6 +23,9 @@ app.use('/api/predictions', predictionRoutes);
 app.use('/api/leaderboard', leaderboardRoutes);
 
 app.use('/api/races', raceRoutes);
+
+app.use('/api/drivers', driverRoutes);
+
 mongoose.connect(process.env.MONGO_URI)
   .then(() => console.log('MongoDB connected'))
   .catch((err) => console.error('MongoDB connection error:', err));
