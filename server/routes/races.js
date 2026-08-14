@@ -8,7 +8,7 @@ router.get('/:season', async (req, res) => {
   try {
     const season = Number(req.params.season);
 
-    const cached = await ApiCache.findOne({ season });
+    const cached = await ApiCache.findOne({ key: String(season) });
     const isFresh = cached && (Date.now() - cached.updatedAt.getTime() < CACHE_TTL_MS);
 
     if (isFresh) {
