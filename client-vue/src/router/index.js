@@ -12,7 +12,12 @@ const router = createRouter({
   routes: [
     { path: '/', name: 'home', component: HomeView },
     { path: '/login', name: 'login', component: LoginView },
-    { path: '/predictions', name: 'predictions', component: PredictionsView },
+    {
+      path: '/predictions',
+      name: 'predictions',
+      component: PredictionsView,
+      meta: { requiresAuth: true },
+    },
     { path: '/leaderboard', name: 'leaderboard', component: LeaderboardView },
     { path: '/signup', name: 'signup', component: SignupView },
     {
