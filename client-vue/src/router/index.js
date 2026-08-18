@@ -4,6 +4,8 @@ import LoginView from '../views/LoginView.vue'
 import PredictionsView from '../views/PredictionsView.vue'
 import LeaderboardView from '../views/LeaderboardView.vue'
 import SignupView from '../views/SignupView.vue'
+import PredictSubmitView from '@/views/PredictSubmitView.vue'
+import { useAuthStore } from '../stores/auth'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -13,7 +15,21 @@ const router = createRouter({
     { path: '/predictions', name: 'predictions', component: PredictionsView },
     { path: '/leaderboard', name: 'leaderboard', component: LeaderboardView },
     { path: '/signup', name: 'signup', component: SignupView },
+    {
+      path: '/predict',
+      name: 'predict',
+      component: PredictSubmitView,
+      meta: { requiresAuth: true },
+    },
   ],
+})
+
+router.beforeEach((to, from) => {
+  const authStore = useAuthStore()
+
+  if (to.meta.requiresAuth && !authStore.isLoggedIn) {
+    return { name: 'login' }
+  }
 })
 
 export default router

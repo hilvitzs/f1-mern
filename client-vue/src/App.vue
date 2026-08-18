@@ -18,6 +18,7 @@ function handleLogout() {
     <RouterLink to="/leaderboard">Leaderboard</RouterLink>
     
     <template v-if="authStore.isLoggedIn">
+      <RouterLink to="/predict">Submit Prediction</RouterLink>
       <button @click="handleLogout">Log out</button>
     </template>
     <template v-else>
