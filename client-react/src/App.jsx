@@ -5,6 +5,7 @@ import { Leaderboard } from './views/Leaderboard';
 import { Predictions } from './views/Predictions';
 import { PredictSubmit } from './views/PredictSubmit';
 import { Login } from './views/Login';
+import { Signup } from './views/Signup';
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
           <Route path="/leaderboard" element={<Leaderboard />} />
           <Route path="/predict" element={<PredictSubmit />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<Signup />} />
         </Routes>
       </div>
     </>
