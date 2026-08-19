@@ -1,4 +1,4 @@
-import { Link } from 'react-router'
+import { Link } from 'react-router';
 
 export default function Navbar() {
   return (
@@ -7,6 +7,7 @@ export default function Navbar() {
       <Link to="/predictions">Predictions</Link>
       <Link to="/leaderboard">Leaderboard</Link>
       <Link to="/predict">Submit prediction</Link>
+      <Link to="/login">Log In</Link>
     </nav>
-  )
+  );
 }
