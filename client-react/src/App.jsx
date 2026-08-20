@@ -6,6 +6,7 @@ import { Predictions } from './views/Predictions';
 import { PredictSubmit } from './views/PredictSubmit';
 import { Login } from './views/Login';
 import { Signup } from './views/Signup';
+import { AuthWrapper } from './components/AuthWrapper';
 
 function App() {
   return (
@@ -14,9 +15,23 @@ function App() {
         <Navbar />
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/predictions" element={<Predictions />} />
           <Route path="/leaderboard" element={<Leaderboard />} />
-          <Route path="/predict" element={<PredictSubmit />} />
+          <Route
+            path="/predictions"
+            element={
+              <AuthWrapper>
+                <Predictions />
+              </AuthWrapper>
+            }
+          />
+          <Route
+            path="/predict"
+            element={
+              <AuthWrapper>
+                <PredictSubmit />
+              </AuthWrapper>
+            }
+          />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
         </Routes>
